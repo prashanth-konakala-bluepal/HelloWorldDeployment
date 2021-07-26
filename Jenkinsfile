@@ -16,5 +16,15 @@ pipeline{
                                 sh "mvn clean package"
                             }
                     }
+                stage("Docker Build")
+                    {
+                        steps
+                            {
+                                sh 'docker version'
+                                sh 'docker build -t HelloWorldDeployment .'
+                                sh 'docker image list'
+                                sh 'docker tag HelloWorldDeployment prashanth-konakala-bluepal/HelloWorldDeployment:HelloWorldDeployment'
+                            }
+                    }
             }   
 }
