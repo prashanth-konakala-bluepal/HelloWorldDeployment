@@ -9,5 +9,12 @@ pipeline{
                                 git branch: 'main', url: 'https://github.com/prashanth-konakala-bluepal/HelloWorldDeployment.git'
                             }
                     }
+                stage("MVN Build")
+                    {
+                        steps
+                            {
+                                sh "mvn clean package"
+                            }
+                    }
             }   
 }
