@@ -31,7 +31,7 @@ pipeline{
                     {
                         steps
                             {
-                                sh "docker build -t prashanth-konakala-bluepal/hello_world_deployment:${Docker_TAG} ."
+                                sh "docker build . -t prashanth-konakala-bluepal/hello_world_deployment:${Docker_TAG}"
                                 // sh "docker tag HelloWorldDeployment prashanth-konakala-bluepal/HelloWorldDeployment:HelloWorldDeployment"
                             }
                     }
