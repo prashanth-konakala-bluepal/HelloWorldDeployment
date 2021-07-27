@@ -1,4 +1,4 @@
-currentBuild.dispalyName = "K8s-Deployment-#"+currentBuild.number
+currentBuild.displayName = "K8s-Deployment-#"+currentBuild.number
 
 pipeline{
     
