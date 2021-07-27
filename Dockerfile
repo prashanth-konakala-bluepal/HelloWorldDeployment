@@ -1,6 +1,6 @@
-FROM tomcat:8.0.20-jre8
+FROM tomcat:10.0.8
 
-RUN sudo apt-get update && apt add /bin/sh
+# RUN sudo apt-get update && apt add /bin/sh
 
 RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
