@@ -24,14 +24,14 @@ pipeline{
                         steps
                             {
                                 sh "mvn clean package"
-                                // sh "mv /var/lib/jenkins/workspace/Docker_Image_pulling/webapp/target/*.war /var/lib/jenkins/workspace/Docker_Image_pulling/webapp/target/HelloWorld.war"
+                                sh "mv /var/lib/jenkins/workspace/Docker_Image_pulling/webapp/target/*.war /var/lib/jenkins/workspace/Docker_Image_pulling/webapp/target/HelloWorld.war"
                             }
                     }
                 stage("Build Docker Image")
                     {
                         steps
                             {
-                                sh "docker build . -t prashanth-konakala-bluepal/HelloWorldDeployment:${Docker_TAG}"
+                                sh "docker build . -t prashanth-konakala-bluepal/hello_world_deployment:${Docker_TAG}"
                                 // sh "docker tag HelloWorldDeployment prashanth-konakala-bluepal/HelloWorldDeployment:HelloWorldDeployment"
                             }
                     }
