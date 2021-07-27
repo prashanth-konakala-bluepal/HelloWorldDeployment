@@ -1,5 +1,15 @@
+currentBuild.dispalyName = "K8s-Deployment-#"+currentBuild.number
+
 pipeline{
+    
     agent any
+
+    environment
+        {
+            DOCKER_TAG = getDockerTag()
+        }
+        
+        
         stages
             {
                 stage("Git Clone")
@@ -14,17 +24,22 @@ pipeline{
                         steps
                             {
                                 sh "mvn clean package"
+                                sh "mv /var/lib/jenkins/workspace/Docker_Image_pulling/webapp/target/*.war /var/lib/jenkins/workspace/Docker_Image_pulling/webapp/target/HelloWorld.war"
                             }
                     }
-                stage("Docker Build")
+                stage("Build Docker Image")
                     {
                         steps
                             {
-                                sh 'docker version'
-                                sh 'docker build -t HelloWorldDeployment .'
-                                sh 'docker image list'
-                                sh 'docker tag HelloWorldDeployment prashanth-konakala-bluepal/HelloWorldDeployment:HelloWorldDeployment'
+                                sh "docker build . -t prashanth-konakala-bluepal/HelloWorldDeployment:${Docker_TAG}"
+                                // sh "docker tag HelloWorldDeployment prashanth-konakala-bluepal/HelloWorldDeployment:HelloWorldDeployment"
                             }
                     }
             }   
 }
+
+def getDockerTag()
+    {
+        def tag = sh script: 'gir rev-parse HEAD', returnStdout: true
+        return tag
+    }
