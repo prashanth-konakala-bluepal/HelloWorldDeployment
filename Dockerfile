@@ -1,7 +1,8 @@
 FROM tomcat:8
 MAINTAINER prashanth
 
-COPY /target/*.war /usr/local/tomcat/webapps/hello_world_deployment.war
+ADD /target/*.war /usr/local/tomcat/webapps/hello_world_deployment.war
+#COPY /target/*.war /usr/local/tomcat/webapps/hello_world_deployment.war
 #COPY /var/lib/jenkins/workspace/Docker_Image_pulling/webapp/target/*.war /usr/local/tomcat/webapps/hello_world_deployment.war
 
 
