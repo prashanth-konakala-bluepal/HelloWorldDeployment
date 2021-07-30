@@ -23,7 +23,12 @@ pipeline{
                     {
                         steps
                             {
-                                sh "mvn clean package"
+                                script
+                                    {
+                                        def MVN_PATH = tool (name: 'maven3.8.1', type: 'maven')+"/opt/apache-maven-3.6.3/bin/mvn"
+                                        sh "$MVN_PATH clean package"
+                                    }
+                                //sh "mvn clean package"
                                 // sh "mv /var/lib/jenkins/workspace/Docker_Image_pulling/webapp/target/*.war /var/lib/jenkins/workspace/Docker_Image_pulling/webapp/target/HelloWorld.war"
                             }
                     }
